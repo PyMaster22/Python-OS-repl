@@ -34,7 +34,7 @@ def lang(username, cdir):
     elif command[0] == 'editfile':
         editor.editor(cdir + '/' + command[1])
     elif command[0] == 'run':
-        execfile(command[1])
+        os.system('python3 ' + command[1])
     elif command[0] == 'list':
         print(' '.join(os.listdir(cdir)))
     elif command[0] == 'quit':
