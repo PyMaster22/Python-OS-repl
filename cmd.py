@@ -1,11 +1,7 @@
 import os, editor, os.path, shutil
 print('===Help===\n\nWARNING SPACES ARE NOT SUPPORTED\n\nhelp - Prints this message\necho - Prints everything after \'echo\'\nmakedir - Make a directory with the name of everything after the \'makedir\'\ndeldir - Like \'makdir\' Just deletes the directory\nchangedir - Changes the directory\nupdir - Goes up a directory\nmakefile - Makes a file with the name of everything after the \'makefile\'\ndelfile - The same thing as \'makefile\' but deletes the file\neditfile - Opens a tkinter editor for the filename given\nrun - Runs the given python file\nlist - Lists all files and folders in the current directory\nquit - Quits the OS\n')
 def lang(username, cdir):
-    command = input(cdir + '/ ').split(' ')
-    if type(command) is str:
-      tmp = command
-      command = []
-      command.append(tmp)
+    command = (input(cdir + '/ ') + ' ').split(' ')
     if command[0] != 'echo':
        command = ' '.join(command).replace('../', '').replace('/', '').split(' ')
     command.append('')
