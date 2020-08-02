@@ -1,10 +1,11 @@
 import os, editor, os.path, shutil
 print('===Help===\n\nWARNING SPACES ARE NOT SUPPORTED\n\nhelp - Prints this message\necho - Prints everything after \'echo\'\nmakedir - Make a directory with the name of everything after the \'makedir\'\ndeldir - Like \'makdir\' Just deletes the directory\nchangedir - Changes the directory\nupdir - Goes up a directory\nmakefile - Makes a file with the name of everything after the \'makefile\'\ndelfile - The same thing as \'makefile\' but deletes the file\neditfile - Opens a tkinter editor for the filename given\nrun - Runs the given python file\nlist - Lists all files and folders in the current directory\nquit - Quits the OS\n')
 def lang(username, cdir):
-    command = (input(cdir + '/ ') + ' ').split(' ')
+    command = str(input(cdir + '/ ')).split(' ')
+    command.append('')
     if command[0] != 'echo':
        command = ' '.join(command).replace('../', '').replace('/', '').split(' ')
-    command.append('')
+    command.append(' ')
     if command[0] == 'help':
         if command[1] == '':
           print('===Help===\n\nWARNING SPACES ARE NOT SUPPORTED\n\nhelp - Prints this message\necho - Prints everything after \'echo\'\nmakedir mkdir - Make a directory with the name of everything after the \'makedir\'\ndeldir - Like \'makdir\' Just deletes the directory\nchangedir cd - Changes the directory\nupdir - Goes up a directory\nmakefile touch - Makes a file with the name of everything after the \'makefile\'\ndelfile - The same thing as \'makefile\' but deletes the file\neditfile vim vi - Opens a tkinter editor for the filename given\nrun - Runs the given python file\nlist - Lists all files and folders in the current directory\nquit - Quits the OS\n')
@@ -23,7 +24,9 @@ def lang(username, cdir):
         else:
             print('Folder does not yet exist.')
     elif command[0] == 'updir':
-        cdir = cdir.split('/')[0:-2]
+        cdir = cdir.split('/')
+        cdir.pop()
+        cdir = '/'.join(cdir)
     elif command[0] == 'makefile' or command[0] == 'touch':
         open(cdir + '/' + command[1], 'x')
     elif command[0] == 'delfile':
@@ -40,6 +43,6 @@ def lang(username, cdir):
     elif command[0] == 'quit':
         quit()
     else:
-        print('Command does not exist yet')
+        print('command does not exist yet')
     print('')
     lang(username, cdir)

@@ -1,4 +1,8 @@
 import hashlib, os, time
+if not os.path.exists('users/'):
+    os.mkdir('users/')
+    os.mkdir('users/guest/')
+    open('users/users.txt', 'w+').write('guest')
 username = input('Username: ')
 if username in open('users/users.txt', 'r').read().split('\n'):
     if username == 'guest':
